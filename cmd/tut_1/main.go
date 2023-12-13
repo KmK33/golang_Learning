@@ -85,18 +85,45 @@ func (ll *LinkedList) searchElement(value int){
 	fmt.Println("Element not found")
 }
 
+func (ll *LinkedList) reverseList(){
+	current := ll.head 
+
+	var prev *Node =  nil
+	var next *Node =  nil
+
+	for current != nil{
+		next = current.next
+		current.next = prev
+		prev = current
+		current = next	
+
+		
+	}
+
+	ll.head = prev
+
+
+
+	
+	
+}
+
 func main() {
 	list := LinkedList{}
 
 	list.insertAtBeginning(699)
 	list.insertAtBeginning(200)
+	list.insertAtBeginning(1)
+	list.insertAtBeginning(2)
 
 	list.insertAtEnd(420)
 	// list.display()
 
 	// list.searchElement(420)
 
-	list.deleteList()
+	list.display()
+
+	list.reverseList()
 	list.display()
 
 	
