@@ -17,6 +17,7 @@ func (ll *LinkedList) insertAtBeginning(data int) {
 	newNode := &Node{data, ll.head}
 
 	ll.head = newNode
+	fmt.Println("Node inserted")
 }
 
 func (ll *LinkedList) insertAtEnd(data int){
@@ -34,6 +35,7 @@ func (ll *LinkedList) insertAtEnd(data int){
 	}
 
 	current.next = newNode
+	fmt.Println("Node inserted")
 }
 
 func (ll *LinkedList) deleteNode(value int){
@@ -101,30 +103,97 @@ func (ll *LinkedList) reverseList(){
 	}
 
 	ll.head = prev
-
-
-
-	
-	
 }
 
 func main() {
+	var choice uint16;
+
 	list := LinkedList{}
 
-	list.insertAtBeginning(699)
-	list.insertAtBeginning(200)
-	list.insertAtBeginning(1)
-	list.insertAtBeginning(2)
+	for choice != 8  {
+		fmt.Println("Select the operation you want to perform:")
+		fmt.Println("1.Insert node at beginning\n2.Insert node at End")
+		fmt.Println("3.Delete a Node\n4.Delete the list")
+		fmt.Println("5.Reverse the list\n6.Search an element")
+		fmt.Println("7.Display list\n8.Exit")
 
-	list.insertAtEnd(420)
-	// list.display()
+		_,err := fmt.Scanln(&choice)
 
-	// list.searchElement(420)
+		if err != nil{
+			fmt.Print(err)
+			
 
-	list.display()
+		}
+		
 
-	list.reverseList()
-	list.display()
+		switch choice {
+		case 1:
+			var data int;
+			fmt.Println("Enter data to be inserted : " )
+			_,err := fmt.Scanln(&data)
+			if err != nil {
+				fmt.Println(err)
+				break
+			}
+			list.insertAtBeginning(data)
+
+		case 2:
+			var data int;
+			fmt.Println("Enter data to be inserted : " )
+			_,err := fmt.Scanln(&data)
+			if err != nil {
+				fmt.Println(err)
+				break
+			}
+			list.insertAtEnd(data)
+
+		case 3:
+			var data int;
+			fmt.Println("Enter data to be deleted : " )
+			_,err := fmt.Scanln(&data)
+			if err != nil {
+				fmt.Println(err)
+				break
+			}
+			list.deleteNode(data)
+
+		case 4:
+			list.deleteList()
+			fmt.Println("List deleted")
+
+		case 5 :
+			list.reverseList()
+			fmt.Println("List reversed!!")
+
+		case 6:
+			var data int;
+			fmt.Println("Enter data to be searced : " )
+			_,err := fmt.Scanln(&data)
+			if err != nil {
+				fmt.Println(err)
+				break
+			}
+			list.searchElement(data)
+
+		case 7:
+			list.display()
+
+		case 8:
+			fmt.Println("Exitingggg")
+
+		default:
+			fmt.Println("Invalid option!!!")
+
+			
+
+			
+		}
+
+		
+	}
+
+
+	
 
 	
 
