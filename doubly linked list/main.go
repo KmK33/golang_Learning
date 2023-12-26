@@ -42,6 +42,39 @@ func (dll *DoublyLinkedLIst) insertAtEnd(data int){
 	dll.tail = &newNode
 }
 
+func (dll *DoublyLinkedLIst) delete(data int ){
+	current := dll.head
+
+	
+
+	for current != nil {
+
+
+		if current.data == data{
+			
+			if current == dll.head{
+				dll.head = current.next
+				if dll.head != nil {
+					dll.head.prev = nil
+				}
+			}else if current == dll.tail{
+				dll.tail = current.prev
+				dll.tail.next = nil
+				
+			}else{
+				current.prev.next = current.next
+				current.next.prev = current.prev
+
+			}
+			// fmt.Println("Node delete")
+			return
+		}
+		current = current.next
+	}
+
+	fmt.Println("Node not found ")
+}
+
 func (dll *DoublyLinkedLIst) display(){
 	current := dll.head
 
@@ -62,7 +95,10 @@ func main() {
 
 	list.insertAtEnd(69)
 	list.insertAtEnd(690)
+	list.insertAtEnd(6900)
 	list.insertAtEnd(420)
 
+	list.display()
+	list.delete(4201)
 	list.display()
 }
