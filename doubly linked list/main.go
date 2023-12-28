@@ -75,6 +75,23 @@ func (dll *DoublyLinkedLIst) delete(data int ){
 	fmt.Println("Node not found ")
 }
 
+// func (dll *DoublyLinkedLIst) reverseList(){
+
+// 	current := dll.head
+
+// 	dll.tail.next = dll.head
+// 	dll.tail.prev = nil
+
+// 	dll.head.prev = dll.tail
+// 	dll.head.next = nil
+
+// 	dll.head = dll.tail
+
+// 	dll.head = current
+
+
+// }
+
 func (dll *DoublyLinkedLIst) display(){
 	current := dll.head
 
@@ -95,10 +112,10 @@ func main() {
 
 	list.insertAtEnd(69)
 	list.insertAtEnd(690)
-	list.insertAtEnd(6900)
-	list.insertAtEnd(420)
+	
+	list.display()
+	// list.reverseList()
+	list.display()
 
-	list.display()
-	list.delete(4201)
-	list.display()
+	
 }
